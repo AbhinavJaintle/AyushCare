@@ -17,6 +17,16 @@ const PinSchema = new mongoose.Schema(
       required: true,
       min: 3,
     },
+    beds: {
+      type: Number,
+      required: true,
+      min: 1,
+    },
+    ref: {
+      type: String,
+      required: true,
+      min: 0,
+    },
     rating: {
       type: Number,
       required: true,

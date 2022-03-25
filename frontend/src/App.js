@@ -15,10 +15,12 @@ function App() {
   const [newPlace, setNewPlace] = useState(null);
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
+  const [beds, setBeds] = useState(0);
+  const [ref, setRef] = useState(null);
   const [star, setStar] = useState(0);
   const [viewport, setViewport] = useState({
-    latitude: 47.040182,
-    longitude: 17.071727,
+    latitude: 28.7041,
+    longitude: 77.1025,
     zoom: 4,
   });
   const [showRegister, setShowRegister] = useState(false);
@@ -43,6 +45,8 @@ function App() {
       username: currentUsername,
       title,
       desc,
+      beds,
+      ref,
       rating: star,
       lat: newPlace.lat,
       long: newPlace.long,
@@ -115,10 +119,15 @@ function App() {
                 anchor="left"
               >
                 <div className="card">
-                  <label>Place</label>
+                  <label>Hospital Name</label>
                   <h4 className="place">{p.title}</h4>
-                  <label>Review</label>
+                  <label>About Us</label>
                   <p className="desc">{p.desc}</p>
+                  <label>Vacant Beds</label>
+                  <p className="beds">{p.beds}</p>
+                  <label>Reference Number</label>
+                  <p className="ref">{p.ref}</p>
+                  
                   <label>Rating</label>
                   <div className="stars">
                     {Array(p.rating).fill(<Star className="star" />)}
@@ -159,16 +168,28 @@ function App() {
             >
               <div>
                 <form onSubmit={handleSubmit}>
-                  <label>Title</label>
+                  <label>Hospital Name</label>
                   <input
-                    placeholder="Enter a title"
+                    placeholder="Enter a Hospital Name"
                     autoFocus
                     onChange={(e) => setTitle(e.target.value)}
                   />
-                  <label>Description</label>
+                  <label>About Us</label>
                   <textarea
-                    placeholder="Say us something about this place."
+                    placeholder="Tell us something about this place."
                     onChange={(e) => setDesc(e.target.value)}
+                  />
+                  <label>Vacant Beds</label>
+                  <input
+                    placeholder="Number of Beds"
+                    autoFocus
+                    onChange={(e) => setBeds(e.target.value)}
+                  />
+                  <label>Reference Number</label>
+                  <input
+                    placeholder="Reference Number"
+                    autoFocus
+                    onChange={(e) => setRef(e.target.value)}
                   />
                   <label>Rating</label>
                   <select onChange={(e) => setStar(e.target.value)}>
